@@ -75,7 +75,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CameraAsBackground.cs" />
     <Compile Include="Assets\Scripts\GyroCamera.cs" />
+    <Compile Include="Assets\Scripts\TileManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

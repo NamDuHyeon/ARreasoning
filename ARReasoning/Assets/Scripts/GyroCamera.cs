@@ -8,6 +8,10 @@ public class GyroCamera : MonoBehaviour {
     private bool gyroSupported;
     private Quaternion rotFix;
 
+    [SerializeField]
+    private Transform worldObj;
+    private float startY;
+
 	// Use this for initialization
 	void Start () {
         gyroSupported = SystemInfo.supportsGyroscope;
@@ -27,6 +31,16 @@ public class GyroCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(gyroSupported && startY == 0)
+        {
+            ResetGyroRotation();
+        }
         transform.localRotation = gyro.attitude * rotFix;
 	}
+
+    void ResetGyroRotation()
+    {
+        startY = transform.eulerAngles.y;
+        worldObj.rotation = Quaternion.Euler(0f, startY, 0f);
+    }
 }
